@@ -1,4 +1,4 @@
-# WooCommerce - Customer Order Email CC
+# WooCommerce Customer Order Email CC
 
 Automatically send copies of all WooCommerce customer emails to additional email addresses stored in the customer's profile.
 
