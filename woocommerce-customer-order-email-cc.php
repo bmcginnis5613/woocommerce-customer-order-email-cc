@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WooCommerce - Customer Order Email CC
+ * Plugin Name: WooCommerce Customer Order Email CC
  * Description: Automatically copy additional email addresses listed in a users profile on all WooCommerce order related emails.
  * Version: 1.0.0
  * Author: FirstTracks Marketing
@@ -40,7 +40,7 @@ class WC_Email_CC {
      */
     public function add_custom_user_profile_fields($user) {
         ?>
-        <h3><?php _e('WooCommerce - Customer Order Email CC', 'woocommerce-email-cc'); ?></h3>
+        <h3><?php _e('WooCommerce Customer Order Email CC', 'woocommerce-email-cc'); ?></h3>
         <table class="form-table">
             <tr>
                 <th>
