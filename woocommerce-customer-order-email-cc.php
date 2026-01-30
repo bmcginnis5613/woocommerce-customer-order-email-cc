@@ -117,7 +117,7 @@ class WC_Email_CC {
             'customer_refunded_order',
             'customer_partially_refunded_order',
             'customer_invoice',
-            'customer_failed_order'
+            'customer_failed_order',
             'customer_renewal_invoice',
             'customer_processing_renewal_order',
             'customer_completed_renewal_order',
