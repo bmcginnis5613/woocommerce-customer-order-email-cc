@@ -121,7 +121,9 @@ class WC_Email_CC {
             'customer_renewal_invoice',
             'customer_processing_renewal_order',
             'customer_completed_renewal_order',
-            'customer_completed_switch_order'
+            'customer_completed_switch_order',
+            'customer_renewal_payment_failed',
+            'customer_payment_retry'
         );
         
         // Only process customer-facing emails
