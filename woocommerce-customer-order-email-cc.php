@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce Customer Order Email CC
  * Description: Automatically copy additional email addresses listed in a users profile on all WooCommerce order related emails.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: FirstTracks Marketing
  * Author URI: https://firsttracksmarketing.com
  */
@@ -163,17 +163,33 @@ class WC_Email_CC {
             return $headers;
         }
         
-        // Ensure headers is an array or string we can work with
-        if (!is_array($headers)) {
-            $headers = array($headers);
+        return $this->append_cc_headers($headers, $valid_emails);
+    }
+
+    /**
+     * Append CC recipients without changing or replacing existing headers.
+     *
+     * WooCommerce commonly supplies headers as one CRLF-delimited string. Turning
+     * that string into a single array item prevents WordPress from parsing the
+     * individual headers correctly, including a CC configured on the email itself.
+     * Keep the original representation and append our CC recipients to it.
+     */
+    private function append_cc_headers($headers, $emails) {
+        $cc_header = 'Cc: ' . implode(', ', $emails);
+
+        if (is_array($headers)) {
+            $headers[] = $cc_header;
+
+            return $headers;
         }
-        
-        // Add CC header for each email
-        foreach ($valid_emails as $email) {
-            $headers[] = 'Cc: ' . $email;
+
+        $headers = (string) $headers;
+
+        if ($headers !== '' && !preg_match('/\r?\n$/', $headers)) {
+            $headers .= "\r\n";
         }
-        
-        return $headers;
+
+        return $headers . $cc_header . "\r\n";
     }
 }
 
